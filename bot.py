@@ -16,7 +16,7 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 async def check_document_status(api_key, document_id, document_key):
-    status_url = f"https://api-free.deepl.com/v2/document/{document_id}"
+    status_url = f"https://api.deepl.com/v2/document/{document_id}"
     headers = {
         "Authorization": f"DeepL-Auth-Key {api_key}",
         "Content-Type": "application/json"
@@ -31,7 +31,7 @@ async def check_document_status(api_key, document_id, document_key):
             return status_data["status"]
 
 async def translate_with_deepl(api_key, file_path, target_language):
-    upload_url = "https://api-free.deepl.com/v2/document"
+    upload_url = "https://api.deepl.com/v2/document"
     headers = {
         "Authorization": f"DeepL-Auth-Key {api_key}"
     }
@@ -61,7 +61,7 @@ async def translate_with_deepl(api_key, file_path, target_language):
                 break
             await asyncio.sleep(20)
         
-        download_url = f"https://api-free.deepl.com/v2/document/{document_id}/result"
+        download_url = f"https://api.deepl.com/v2/document/{document_id}/result"
         download_data = {
             "document_key": document_key
         }
